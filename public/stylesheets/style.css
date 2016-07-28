@@ -1,0 +1,33 @@
+html,body{
+  height: 100%;
+  width: 100%;
+}
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+.main_content{
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  background-color: white;
+}
+@media only screen and (max-device-width: 480px) {
+  body{
+    font-size: 2.0rem;
+  }
+  .main_content{
+    width: 100%;
+  }
+}
+@media screen and (min-device-width: 481px){
+  body{
+    background-color: #cccccc;
+  }
+  .main_content{
+
+    width: 70%;
+  }
+}
