@@ -1,0 +1,12 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font: 14px 'Noto Sans KR', Helvetica, Arial, sans-serif;
+}
