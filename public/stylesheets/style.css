@@ -5,98 +5,170 @@ html,body{
   width: 100%;
 }
 body {
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
   font: 14px 'Noto Sans KR', Helvetica, Arial, sans-serif;
 }
 a {
   color: #00B7FF;
 }
-#root{
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  z-index: 2;
+  background-color: #000000;
+}
+.header_ul{
+  list-style-type: none;
+}
+.header_li{
+  cursor: pointer;
+}
+.link{
+  cursor: pointer;
+}
+#container{
   height: 100%;
   width: 100%;
 }
-.main_content{
-  display: block;
-  margin: 0 auto;
+#pop_content{
+  display: inline-block;
+  position: relative;
+  margin-bottom: 10px;
   height: 100%;
-  background-color: white;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
-#pop_text1{
-  font-size: 50px;
-  font-weight: bold;
+
+#pop_img{
+  padding: 50px;
 }
-#pop_text2{
-  font-size: 50px;
-  font-weight: 300;
-}
+
 #pop_right > p{
   line-height: 20px;
 }
-.link{
-  font-size: 1.5rem;
-  height: 32px;
-  width: 128px;
-  border: 1px solid black;
-  border-radius: 10px;
+#pop_right_margin{
+  display: inline-block;
+  height: 50%;
+  width: 1%;
 }
-.link > a{
-  width:100%;
-  height:100%;
+#pop_text1{
+  font-weight: bold;
 }
-
-.span_link{
-  width:100%;
-  height:100%;
-  z-index:1;
-}
-/**************************moblie web ************************************/
-@media only screen and (max-device-width: 480px) {
-  body{
-    font-size: 2.0rem;
-  }
-  .main_content{
-    width: 100%;
-  }
-  #pop_content{
-    width: 100%;
-  }
+#pop_text2{
+  font-weight: 300;
 }
 
-/***************************pc*****************************************/
-@media screen and (min-device-width: 481px){
-  body{
-    background-color: #cccccc;
-  }
-  #root > div{
-
-  }
-  .main_content{
-    width: 70%;
-  }
-  #pop_content{
-    display: table-cell;
-    position: absolute;
-    top: 0;
-    left: 0;
-    vertical-align: middle;
-    width: 100%;
-    height: 100%;
-  }
-  #pop_content.div{
-    background-color: white;
-    float: left;
-  }
+#detail_link{
+  color: inherit;
+  text-decoration: none;
+}
+.main_content_container{
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}
+.main_content{
+  display: inline-block;
+  width: 70%;
+}
+@media screen and (min-width: 701px){
   #pop_left{
     display: inline-block;
-    width: 49%;
+    width: 50%;
+    height: 100%;
+    text-align: center;
   }
   #pop_right{
-    display: inline-block;
+    position: absolute;
+    top: 0;
+    color: black;
+    font-size: 50px;
+    height: 100%;
     width: 49%;
+    display: inline-block;
+  }
+  #detail{
+    display: table-cell;
+    height: 40px;
+    width: 128px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    vertical-align: middle;
+  }
+  #detail:hover{
+    border-color: #009688;
+    background-color: #009688;
+    color: white;
+    transition-duration: 0.3s;
   }
 }
-@media screen and(max-width: 700px){
+@media screen and (max-width: 700px) {
   #pop_left{
-    display: none;
+  }
+  #pop_right{
+    margin-left:20px;
+    position: absolute;
+    top: 0;
+    color: black;
+    font-size: 50px;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+  }
+  #detail{
+    display: table-cell;
+    height: 40px;
+    width: 128px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    vertical-align: middle;
+  }
+  #detail:hover{
+    border-color: #009688;
+    background-color: #009688;
+    color: white;
+    transition-duration: 0.3s;
+  }
+}
+@media screen and (max-device-width: 480px){
+  /*TODO : utaha img (right bottom)*/
+  #pop_left{
+    width: 0;
+  }
+  #pop_right{
+    margin-left: 20px;
+    position: absolute;
+    top: 0;
+    color: black;
+    font-size: 100px;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+  }
+  #detail{
+    display: table-cell;
+    height: 80px;
+    width: 256px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 40px;
+    font-weight: 300;
+    text-align: center;
+    vertical-align: middle;
+  }
+  #detail:active{
+    /*TODO : moblie pop link active (material shadow)*/
   }
 }
