@@ -13,21 +13,7 @@ body {
 a {
   color: #00B7FF;
 }
-header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 64px;
-  z-index: 2;
-  background-color: #000000;
-}
-.header_ul{
-  list-style-type: none;
-}
-.header_li{
-  cursor: pointer;
-}
+
 .link{
   cursor: pointer;
 }
@@ -109,6 +95,31 @@ header{
     background-color: #009688;
     color: white;
     transition-duration: 0.3s;
+  }
+  .post_container{
+    width: 256px;
+    height: 341px;
+    border: 1px solid black;
+  }
+  .post_img_container{
+    margin: 8px 8px 8px 8px;
+    width: 240px;
+    height: 240px;
+  }
+  .post_img{
+    width: 100%;
+    height: 100%;
+  }
+  .post_contents{
+    margin-left: 16px;
+    margin-right: 16px;
+    width: 240px;
+    height: 50px;
+    text-align: left;
+    overflow: hidden;
+  }
+  .post_contents > p{
+    line-height: 5px;
   }
 }
 @media screen and (max-width: 700px) {
