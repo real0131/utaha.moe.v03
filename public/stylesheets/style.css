@@ -8,7 +8,6 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font: 14px 'Noto Sans KR', Helvetica, Arial, sans-serif;
 }
 a {
   color: #00B7FF;
@@ -59,11 +58,10 @@ a {
   width: 100%;
   display: inline-block;
 }
-.main_content{
-  display: inline-block;
-  width: 70%;
-}
 @media screen and (min-width: 701px){
+  body{
+    font: 14px 'Noto Sans KR', Helvetica, Arial, sans-serif;
+  }
   #pop_left{
     display: inline-block;
     width: 50%;
@@ -96,10 +94,17 @@ a {
     color: white;
     transition-duration: 0.3s;
   }
+
+  .main_content{
+    display: inline-block;
+    width: 70%;
+  }
   .post_container{
+    display: inline-block;
     width: 256px;
     height: 341px;
     border: 1px solid black;
+    margin: 50px 30px;
   }
   .post_img_container{
     margin: 8px 8px 8px 8px;
@@ -123,6 +128,9 @@ a {
   }
 }
 @media screen and (max-width: 700px) {
+  body{
+    font: 14px 'Noto Sans KR', Helvetica, Arial, sans-serif;
+  }
   #pop_left{
   }
   #pop_right{
@@ -152,8 +160,43 @@ a {
     color: white;
     transition-duration: 0.3s;
   }
+
+  .main_content{
+    display: inline-block;
+    width: 70%;
+  }
+  .post_container{
+    display: inline-block;
+    width: 256px;
+    height: 341px;
+    border: 1px solid black;
+    margin: 50px 30px;
+  }
+  .post_img_container{
+    margin: 8px 8px 8px 8px;
+    width: 240px;
+    height: 240px;
+  }
+  .post_img{
+    width: 100%;
+    height: 100%;
+  }
+  .post_contents{
+    margin-left: 16px;
+    margin-right: 16px;
+    width: 240px;
+    height: 50px;
+    text-align: left;
+    overflow: hidden;
+  }
+  .post_contents > p{
+    line-height: 5px;
+  }
 }
 @media screen and (max-device-width: 480px){
+  body{
+    font: 28px 'Noto Sans KR', Helvetica, Arial, sans-serif;
+  }
   /*TODO : utaha img (right bottom)*/
   #pop_left{
     width: 0;
@@ -181,5 +224,37 @@ a {
   }
   #detail:active{
     /*TODO : moblie pop link active (material shadow)*/
+  }
+
+  .main_content{
+    display: inline-block;
+    width: 100%;
+  }
+  .post_container{
+    display: inline-block;
+    width: 80%;
+    height: 682px;
+    border: 2px solid black;
+    margin: 100px 60px;
+  }
+  .post_img_container{
+    margin: 16px 16px 16px 16px;
+    width: 480px;
+    height: 480px;
+  }
+  .post_img{
+    width: 100%;
+    height: 100%;
+  }
+  .post_contents{
+    margin-left: 32px;
+    margin-right: 32px;
+    width: 480px;
+    height: 100px;
+    text-align: left;
+    overflow: hidden;
+  }
+  .post_contents > p{
+    line-height: 10px;
   }
 }
