@@ -50,6 +50,7 @@ a {
 }
 
 #detail_link{
+  display: inline;
   color: inherit;
   text-decoration: none;
 }

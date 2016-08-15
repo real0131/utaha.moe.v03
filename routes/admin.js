@@ -5,7 +5,8 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 
-
+var key = {
+};
 
 var client = mysql.createConnection({
     user : key.user,

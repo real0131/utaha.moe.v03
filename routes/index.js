@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var http = require('http');
+var url = require('url');
 
-
+var key = {
+};
 
 var client = mysql.createConnection({
   user : key.user,
@@ -23,7 +26,23 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/test', function(req, res, next) {
-  res.render('post', { title: 'Express'});
+  var uri = req.url;
+  var query = url.parse(uri,true).query;
+  if (req.method == 'GET' || query.name != null)
+  {
+    client.query(key.table+" "+key.find+" "+query.id+"",function (error ,results) {
+      if (error){
+        console.log(query.name);
+        console.log(error);
+      }else{
+        console.log(query.name);
+        console.log(results);
+        res.render('post', { title: 'Express' , data : results});
+      }
+    });
+  }else {
+    res.end('post');
+  }
 });
 
 router.get('/about', function(req, res, next) {
