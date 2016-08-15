@@ -29,119 +29,23 @@
         <p id="pop_text1">All Changed.</p>
         <p id="pop_text2">Utaha.moe 3rd</p>
         <div id="detail" class="link">
-          <a id="detail_link" href="#">Details</a>
+          <a id="detail_link" href="/about">Details</a>
         </div>
       </div>
     </div>
     <div class="main_content_container">
       <div class="main_content">
 
+        <% data.forEach(function (item, index) { %>
         <div class="post_container">
           <div class="post_img_container">
-            <img src="" class="post_img" alt="post img">
+            <img src="<%= item.img %>" class="post_img" alt="post img">
           </div>
           <div class="post_contents">
-            <p>첫글퍄퍄</p>
+            <a href="<%= item.url %>"><%= item.name %></a>
           </div>
         </div>
-
-        <div class="post_container">
-          <div class="post_img_container">
-            <img src="" class="post_img" alt="post img">
-          </div>
-          <div class="post_contents">
-            <p>첫글퍄퍄</p>
-          </div>
-        </div>
-
-        <div class="post_container">
-          <div class="post_img_container">
-            <img src="" class="post_img" alt="post img">
-          </div>
-          <div class="post_contents">
-            <p>첫글퍄퍄</p>
-          </div>
-        </div>
-
-
-        <div class="post_container">
-          <div class="post_img_container">
-            <img src="" class="post_img" alt="post img">
-          </div>
-          <div class="post_contents">
-            <p>첫글퍄퍄</p>
-          </div>
-        </div>
-
-        <div class="post_container">
-          <div class="post_img_container">
-            <img src="" class="post_img" alt="post img">
-          </div>
-          <div class="post_contents">
-            <p>첫글퍄퍄</p>
-          </div>
-        </div>
-
-        <div class="post_container">
-          <div class="post_img_container">
-            <img src="" class="post_img" alt="post img">
-          </div>
-          <div class="post_contents">
-            <p>첫글퍄퍄</p>
-          </div>
-        </div>
-        <div class="post_container">
-          <div class="post_img_container">
-            <img src="" class="post_img" alt="post img">
-          </div>
-          <div class="post_contents">
-            <p>첫글퍄퍄</p>
-          </div>
-        </div>
-
-        <div class="post_container">
-          <div class="post_img_container">
-            <img src="" class="post_img" alt="post img">
-          </div>
-          <div class="post_contents">
-            <p>첫글퍄퍄</p>
-          </div>
-        </div>
-
-        <div class="post_container">
-          <div class="post_img_container">
-            <img src="" class="post_img" alt="post img">
-          </div>
-          <div class="post_contents">
-            <p>첫글퍄퍄</p>
-          </div>
-        </div>
-        <div class="post_container">
-          <div class="post_img_container">
-            <img src="" class="post_img" alt="post img">
-          </div>
-          <div class="post_contents">
-            <p>첫글퍄퍄</p>
-          </div>
-        </div>
-
-        <div class="post_container">
-          <div class="post_img_container">
-            <img src="" class="post_img" alt="post img">
-          </div>
-          <div class="post_contents">
-            <p>첫글퍄퍄</p>
-          </div>
-        </div>
-
-        <div class="post_container">
-          <div class="post_img_container">
-            <img src="" class="post_img" alt="post img">
-          </div>
-          <div class="post_contents">
-            <p>첫글퍄퍄</p>
-          </div>
-        </div>
+        <% });%>
 
       </div>
     </div>

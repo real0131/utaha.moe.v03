@@ -12,5 +12,12 @@
             content : <textarea name="content"></textarea><br>
             <input type="submit" value="Submit">
         </form>
+        <div>
+            <% data.forEach(function (item, index) { %>
+                <p> <%= item.name %></p>
+                <p> <%= item.url %></p>
+                <p> <%= item.img %></p>
+            <% });%>
+        </div>
     </body>
 </html>
