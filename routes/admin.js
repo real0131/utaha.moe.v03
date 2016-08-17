@@ -23,8 +23,33 @@ router.get('/', function(req, res, next) {
             console.log(error);
         }else{
             console.log('---------db connected');
-            console.log(results);
             res.render('admin', { title: 'Express', data : results });
+        }
+    });
+});
+
+router.post('/',function (req,res) {
+    console.log(req.body);
+    var IdNum;
+    client.query(key.autoIncrement,function (error,results) {
+        if (error)
+        {
+            console.log('DB ---------------autoincrement error  '+error);
+            res.send('DB error');
+        }else{
+            req.body.title = req.body.title.replace("'", "\'");
+            req.body.content = req.body.content.replace("'", "\'");
+            idNum = JSON.parse(JSON.stringify(results))[0].AUTO_INCREMENT;
+            client.query(key.insert + "( '"+ client.escape(req.body.title)+"','"+"http://localhost:3000/post?id="+idNum+"','"+/*req.body.img */" "+ "','"+ client.escape(req.body.content) +"');",function (error,result) {
+                if(error)
+                {
+                    console.log('DB ---------------insert error  '+error);
+                    res.send('DB error');
+                }else{
+                    console.log('DB ---------------insert DB complete!');
+                    res.send('complete!');
+                }
+            });
         }
     });
 });

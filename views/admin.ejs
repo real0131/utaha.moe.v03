@@ -1,25 +1,60 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <head>
-        <link rel="stylesheet/admin.css"/>
+        <link rel='stylesheet' href='/stylesheets/admin.css' />
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <link rel="icon" href="images/favicon.png"/>
-
         <meta charset="utf-8"/>
     </head>
     <body>
         <h1>UTAHA.MOE</h1>
-        <p>author tool</p>
-        <form action="demo_form.asp">
-            title : <input type="text" name="title"><br>
-            content : <textarea name="content"></textarea><br>
-            <input type="submit" value="Submit">
-        </form>
-        <div>
-            <% data.forEach(function (item, index) { %>
-                <p> <%= item.name %></p>
-                <p> <%= item.url %></p>
-                <p> <%= item.img %></p>
-            <% });%>
+        <div class="row">
+        <div class="col s12 m4 l3 ">
+            <div class="collection">
+                <a href="#" class="collection-item" id="menu_author">author tool</a>
+                <a href="#" class="collection-item" id="menu_update">update tool</a>
+                <a href="#" class="collection-item" id="menu_img">image tool</a>
+            </div>
         </div>
+        <div class="col s12 m8 l9">
+            <div id="author_container">
+                <form method="post" name="form_author">
+                    title : <input type="text" name="title"><br>
+                    content : <textarea name="content" id="form_content"></textarea><br>
+                    <input type="text" name="password"><br>
+                    <input type="text" name="set" value="0" style="display: none;"><br>
+                    <input type="submit" value="Submit">
+                </form>
+                <table>
+                    <tr>
+                        <td>name</td>
+                        <td>url</td>
+                        <td>doc</td>
+                    </tr>
+                    <% data.forEach(function (item, index) { %>
+                    <tr>
+                        <td> <%= item.name %></td>
+                        <td> <%= item.url %></td>
+                        <td> <%= item.doc %></td>
+                    </tr>
+                    <% });%>
+                </table>
+            </div>
+            <div id="img_container">
+                <form method="post" name="form_img">
+                    <input type="file">
+                    <input type="text" name="set" value="2" style="display: none;"><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div id="update_container">
+                <form method="post" name="form_author">
+                </form>
+            </div>
+        </div>
+        </div>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/menu.js"></script>
     </body>
 </html>

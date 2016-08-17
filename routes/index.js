@@ -5,6 +5,7 @@ var http = require('http');
 var url = require('url');
 
 var key = {
+  
 };
 
 var client = mysql.createConnection({
@@ -25,18 +26,15 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.get('/test', function(req, res, next) {
+router.get('/post', function(req, res, next) {
   var uri = req.url;
   var query = url.parse(uri,true).query;
-  if (req.method == 'GET' || query.name != null)
+  if (req.method == 'GET' || query.id != null)
   {
     client.query(key.table+" "+key.find+" "+query.id+"",function (error ,results) {
       if (error){
-        console.log(query.name);
         console.log(error);
       }else{
-        console.log(query.name);
-        console.log(results);
         res.render('post', { title: 'Express' , data : results});
       }
     });

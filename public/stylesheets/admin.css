@@ -10,3 +10,19 @@ body {
     overflow-x: hidden;
     font: 14px 'Noto Sans KR', Helvetica, Arial, sans-serif;
 }
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(1)
+{
+    border-bottom: 1px solid #000000;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+#form_content{
+    height: 400px;
+}
+
