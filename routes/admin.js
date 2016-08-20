@@ -6,6 +6,7 @@ var router = express.Router();
 var mysql = require('mysql');
 
 var key = {
+  
  };
 
 var client = mysql.createConnection({
@@ -22,10 +23,10 @@ router.get('/', function(req, res, next) {
         {
             console.log(error);
         }else{
-            res.end('under construction');
-            /*
+            //res.end('under construction');
+
             console.log('---------db connected');
-            res.render('admin', { title: 'Express', data : results });*/
+            res.render('admin', { title: 'Express', data : results });
         }
     });
 });
@@ -39,13 +40,13 @@ router.post('/',function (req,res) {
             console.log('DB ---------------autoincrement error  '+error);
             res.send('DB error');
         }else{
-            req.body.title = req.body.title.replace("'", "\'");
-            req.body.content = req.body.content.replace("'", "\'"); // TODO:'문자 사용
+            //req.body.title = req.body.title.replace(/'/g, "\\'");
+            //req.body.content = req.body.content.replace(/'/g, "\\'"); // TODO:'문자 사용
             idNum = JSON.parse(JSON.stringify(results))[0].AUTO_INCREMENT; 
-            client.query(key.insert + "( '"+ client.escape(req.body.title)+"','"+"http://localhost:3000/post?id="+idNum+"','"+/*req.body.img */" "+ "','"+ client.escape(req.body.content) +"');",function (error,result) {
+            client.query(key.insert + "( "+ client.escape(req.body.title)+",'"+"http://localhost:3000/post?id="+idNum+"','"+/*req.body.img */" "+ "',"+ client.escape(req.body.content) +");",function (error,result) {
                 if(error)
                 {
-                    console.log('DB ---------------insert error  '+error);
+                    console.log('DB ---------------insert error  '+error+'--'+key.insert);
                     res.send('DB error');
                 }else{
                     console.log('DB ---------------insert DB complete!');
