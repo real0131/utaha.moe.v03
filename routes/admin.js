@@ -4,9 +4,11 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var http = require('http');
+var url = require('url');
 
 var key = {
-  
+ 
  };
 
 var client = mysql.createConnection({
@@ -18,17 +20,24 @@ client.query(key.db); //USE TABLE
 
 router.get('/', function(req, res, next) {
     //res.send('admin');
-    client.query(key.table,function (error, results) { //SELECT TABLE
-        if (error)
-        {
-            console.log(error);
-        }else{
-            //res.end('under construction');
+    var uri = req.url;
+    var query = url.parse(uri,true).query;
+    if (req.method == 'GET' || query.password != null) {
+        if(query.password == key.admin) {
+            client.query(key.table, function (error, results) { //SELECT TABLE
+                if (error) {
+                    console.log(error);
+                } else {
+                    //res.end('under construction');
 
-            console.log('---------db connected');
-            res.render('admin', { title: 'Express', data : results });
+                    console.log('---------db connected');
+                    res.render('admin', {title: 'Express', data: results});
+                }
+            });
+        }else {
+            res.end('wrong password');
         }
-    });
+    }
 });
 
 router.post('/',function (req,res) {

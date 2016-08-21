@@ -5,7 +5,6 @@ var http = require('http');
 var url = require('url');
 
 var key = {
-
 };
 
 var client = mysql.createConnection({
@@ -38,8 +37,10 @@ router.get('/post', function(req, res, next) {
         res.render('post', { title: 'Express' , data : results});
       }
     });
-  }else {
-    res.end('post');
+  }else if(req.body ==null){
+    res.end('please input right query');
+  }else{
+    res.end('error');
   }
 });
 
