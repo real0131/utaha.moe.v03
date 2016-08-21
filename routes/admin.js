@@ -8,7 +8,14 @@ var http = require('http');
 var url = require('url');
 
 var key = {
- 
+    user:'',
+    password:'',
+    db:'USE Company',
+    table:'SELECT * FROM utaha',
+    find:'WHERE id LIKE',
+    autoIncrement : 'SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "Company" AND TABLE_NAME = "utaha"',
+    insert :'INSERT INTO utaha (name,url,img,doc) VALUES ',
+    admin : 'admin'
  };
 
 var client = mysql.createConnection({

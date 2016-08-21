@@ -5,6 +5,11 @@ var http = require('http');
 var url = require('url');
 
 var key = {
+  user:'',
+  password:'',
+  db:'USE Company',
+  table:'SELECT * FROM utaha',
+  find:'WHERE id LIKE'
 };
 
 var client = mysql.createConnection({
