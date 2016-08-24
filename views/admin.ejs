@@ -56,8 +56,26 @@
                 </form>
             </div>
             <div id="update_container">
-                <form method="post" name="form_author">
+                <form method="post" name="form_update">
+                    id : <input type="text" name="update_id">
+                    title : <input type="text" name="update_title">
+                    content : <input type="text" name="update_content">
+                    <input type="submit" value="Submit">
                 </form>
+                <table>
+                    <tr>
+                        <td>name</td>
+                        <td>url</td>
+                        <td>doc</td>
+                    </tr>
+                    <% data.forEach(function (item, index) { %>
+                    <tr>
+                        <td> <%= item.name %></td>
+                        <td> <%= item.url %></td>
+                        <td> <%= item.doc %></td>
+                    </tr>
+                    <% });%>
+                </table>
             </div>
         </div>
         </div>

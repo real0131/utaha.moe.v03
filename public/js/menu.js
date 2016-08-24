@@ -1,4 +1,5 @@
 $('#img_container').css('display','none');
+$('#update_container').css('display','none');
 
 $('#menu_author').click(function () {
     $('#img_container').css('display','none');
