@@ -11,10 +11,10 @@ var client;
 var key = {
     user:'root',
     password:'',
-    db:'USE Company',
+    db:'USE db',
     table:'SELECT * FROM utaha',
     find:'WHERE id LIKE',
-    autoIncrement : 'SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "Company" AND TABLE_NAME = "utaha";',
+    autoIncrement : 'SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "db" AND TABLE_NAME = "utaha";',
     insert :'INSERT INTO utaha (name,url,img,doc) VALUES ',
     admin : 'admin'
  };
@@ -78,7 +78,7 @@ router.post('/',function (req,res) {
             //req.body.title = req.body.title.replace(/'/g, "\\'");
             //req.body.content = req.body.content.replace(/'/g, "\\'"); // TODO:'문자 사용
             idNum = JSON.parse(JSON.stringify(results))[0].AUTO_INCREMENT; 
-            client.query(key.insert + "( "+ client.escape(req.body.title)+",'"+"http://localhost:3000/post?id="+idNum+"','"+/*req.body.img */" "+ "',"+ client.escape(req.body.content) +");",function (error,result) {
+            client.query(key.insert + "( "+ client.escape(req.body.title)+",'"+"http://utaha.moe/post?id="+idNum+"','"+/*req.body.img */" "+ "',"+ client.escape(req.body.content) +");",function (error,result) {
                 if(error)
                 {
                     console.log('DB ---------------insert error  '+error+'--'+key.insert);
