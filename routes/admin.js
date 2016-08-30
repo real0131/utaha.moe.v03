@@ -80,7 +80,7 @@ router.post('/',function (req,res) {
             //req.body.content = req.body.content.replace(/'/g, "\\'"); // TODO:'문자 사용
             idNum = JSON.parse(JSON.stringify(results))[0].AUTO_INCREMENT;
             req.body.content = xss(req.body.content);
-            console.log(req.body.content);
+            req.body.title = xss(req.body.content);
             client.query(key.insert + "( "+ client.escape(req.body.title)+",'"+"http://utaha.moe/post?id="+idNum+"','"+/*req.body.img */" "+ "',"+ client.escape(req.body.content) +");",function (error,result) {
                 if(error)
                 {
