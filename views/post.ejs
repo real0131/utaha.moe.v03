@@ -22,10 +22,14 @@
     </head>
     <body>
     <nav class="light-blue lighten-1" role="navigation"></nav>
-    <% data.forEach(function (item,index) { %>
-        <p><%= item.name %></p>
-        <div><%- item.doc %></div>
-    <%});%>
+    <div class="panel-container">
+        <div class="card-panel white">
+            <% data.forEach(function (item,index) { %>
+            <p><%= item.name %></p>
+            <div><%- item.doc %></div>
+            <%});%>
+    </div>
+    </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     </body>

@@ -6,11 +6,12 @@ var router = express.Router();
 var mysql = require('mysql');
 var http = require('http');
 var url = require('url');
+var xss = require('xss');
 var client;
 
 var key = {
     user:'root',
-    password:'',
+    password:'!',
     db:'USE db',
     table:'SELECT * FROM utaha',
     find:'WHERE id LIKE',
@@ -77,7 +78,9 @@ router.post('/',function (req,res) {
         }else{
             //req.body.title = req.body.title.replace(/'/g, "\\'");
             //req.body.content = req.body.content.replace(/'/g, "\\'"); // TODO:'문자 사용
-            idNum = JSON.parse(JSON.stringify(results))[0].AUTO_INCREMENT; 
+            idNum = JSON.parse(JSON.stringify(results))[0].AUTO_INCREMENT;
+            req.body.content = xss(req.body.content);
+            console.log(req.body.content);
             client.query(key.insert + "( "+ client.escape(req.body.title)+",'"+"http://utaha.moe/post?id="+idNum+"','"+/*req.body.img */" "+ "',"+ client.escape(req.body.content) +");",function (error,result) {
                 if(error)
                 {
