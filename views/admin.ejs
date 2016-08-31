@@ -29,7 +29,7 @@
         </div>
         <div class="col s12 m8 l9">
             <div id="author_container">
-                <form method="post" name="form_author">
+                <form method="post" action="admin/form_author">
                     title : <input type="text" name="title"><br>
                     content : <textarea name="content" id="form_content"></textarea><br>
                     <input type="submit" value="Submit">
@@ -39,26 +39,27 @@
                         <td>name</td>
                         <td>url</td>
                         <td>doc</td>
+                        <td>settings</td>
                     </tr>
                     <% data.forEach(function (item, index) { %>
                     <tr>
                         <td> <%= item.name %></td>
                         <td> <%= item.url %></td>
                         <td> <%= item.doc %></td>
+                        <td> <a href="#">delete</a></td>
                     </tr>
                     <% });%>
                 </table>
             </div>
             <div id="img_container">
-                <form method="post" name="form_img">
+                <form method="post" action="admin/form_img">
                     <input type="file">
-                    <input type="text" name="set" value="2" style="display: none;"><br>
                     <input type="submit" value="Submit">
                 </form>
             </div>
             <div id="update_container">
-                <form method="post" name="form_update">
-                    id : <input type="text" name="update_id">
+                <form method="post" action="admin/form_update">
+                    id : <input type="text" name="id">
                     title : <input type="text" name="update_title">
                     content : <input type="text" name="update_content">
                     <input type="submit" value="Submit">

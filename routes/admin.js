@@ -11,13 +11,15 @@ var client;
 
 var key = {
     user:'root',
-    password:'!',
+    password:'',
     db:'USE db',
     table:'SELECT * FROM utaha',
     find:'WHERE id LIKE',
     autoIncrement : 'SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "db" AND TABLE_NAME = "utaha";',
     insert :'INSERT INTO utaha (name,url,img,doc) VALUES ',
-    admin : 'admin'
+    update : 'UPDATE utaha SET ',
+    admin : 'admin',
+    url : 'http://utaha.moe/post?id='
  };
 
 
@@ -67,7 +69,7 @@ router.get('/', function(req, res, next) {
     }
 });
 
-router.post('/',function (req,res) {
+router.post('/form_author',function (req,res) { //insert
     console.log(req.body);
     var IdNum; //AUTO INCREMENT id 값
     client.query(key.autoIncrement,function (error,results) {
@@ -76,12 +78,13 @@ router.post('/',function (req,res) {
             console.log('DB ---------------autoincrement error  '+error);
             res.send('DB error');
         }else{
+            console.log(req.body);
             //req.body.title = req.body.title.replace(/'/g, "\\'");
             //req.body.content = req.body.content.replace(/'/g, "\\'"); // TODO:'문자 사용
             idNum = JSON.parse(JSON.stringify(results))[0].AUTO_INCREMENT;
             req.body.content = xss(req.body.content);
             req.body.title = xss(req.body.content);
-            client.query(key.insert + "( "+ client.escape(req.body.title)+",'"+"http://utaha.moe/post?id="+idNum+"','"+/*req.body.img */" "+ "',"+ client.escape(req.body.content) +");",function (error,result) {
+            client.query(key.insert + "( "+ client.escape(req.body.title)+",'"+key.url+idNum+"','"+/*req.body.img */" "+ "',"+ client.escape(req.body.content) +");",function (error,result) {
                 if(error)
                 {
                     console.log('DB ---------------insert error  '+error+'--'+key.insert);
@@ -95,4 +98,42 @@ router.post('/',function (req,res) {
     });
 });
 
+router.post('/form_img', function (req,res) { //img
+    console.log(req.body);
+    res.send('complete!');
+});
+
+router.post('/form_update', function (req,res) { //update
+    console.log(req.body);
+    req.body.id = Number(req.body.id);
+    req.body.update_title = xss(req.body.update_title);
+    req.body.update_content = xss(req.body.update_content);
+    if(Number.isInteger(req.body.id)){
+        if(req.body.update_title==''){ //title이 없을때
+            client.query(key.update+"doc="+client.escape(req.body.update_content)+" WHERE id="+req.body.id+";",function (error,result) {
+                if(error)
+                {
+                    console.log('update error------------'+error);
+                }else {
+                    console.log('db'+req.body.id +' doc update complete');
+                    res.end('update complete');
+                }
+            });
+        }else{ //title이 있을때(title도 수정할때)
+            client.query(key.update+"name="+client.escape(req.body.update_title)+",doc="+client.escape(req.body.update_content)+" WHERE id="+req.body.id+";",function (error,result) {
+                if(error)
+                {
+                    console.log('update error------------'+error);
+                }else {
+                    console.log('db'+req.body.id +' title doc update complete');
+                    res.end('update complete');
+                }
+            });
+        }
+    }
+});
+
+router.post('/form_delete', function (req,res) { //delete
+    console.log(req.body);
+});
 module.exports = router;
