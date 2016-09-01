@@ -12,10 +12,10 @@ var client;
 var key = {
     user:'root',
     password:'',
-    db:'USE db',
+    db:'USE Company',
     table:'SELECT * FROM utaha',
     find:'WHERE id LIKE',
-    autoIncrement : 'SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "db" AND TABLE_NAME = "utaha";',
+    autoIncrement : 'SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "Company" AND TABLE_NAME = "utaha";',
     insert :'INSERT INTO utaha (name,url,img,doc) VALUES ',
     update : 'UPDATE utaha SET ',
     admin : 'admin',
@@ -114,6 +114,7 @@ router.post('/form_update', function (req,res) { //update
                 if(error)
                 {
                     console.log('update error------------'+error);
+                    res.send('DB error');
                 }else {
                     console.log('db'+req.body.id +' doc update complete');
                     res.end('update complete');
@@ -124,6 +125,7 @@ router.post('/form_update', function (req,res) { //update
                 if(error)
                 {
                     console.log('update error------------'+error);
+                    res.send('DB error');
                 }else {
                     console.log('db'+req.body.id +' title doc update complete');
                     res.end('update complete');
@@ -133,7 +135,26 @@ router.post('/form_update', function (req,res) { //update
     }
 });
 
-router.post('/form_delete', function (req,res) { //delete
-    console.log(req.body);
+router.get('/form_delete', function (req,res) { //delete
+    var uri = req.url;
+    var query = url.parse(uri,true).query;
+    console.log('asdf'+query);
+    query.id = Number(query.id);
+    query.password = xss(query.password);
+    if(query.id!=null && query.password == key.admin)
+    {
+        client.query('DELETE FROM utaha WHERE id='+ query.id +';',function (error,result) {
+           if(error)
+           {
+               console.log('db delete error ----------'+error);
+               res.end('delete error');
+           }else {
+               res.end('delete complete');
+           }
+        });
+    }else {
+        res.end('password is wrong');
+    }
 });
+
 module.exports = router;

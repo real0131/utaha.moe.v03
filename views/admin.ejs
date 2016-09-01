@@ -46,7 +46,7 @@
                         <td> <%= item.name %></td>
                         <td> <%= item.url %></td>
                         <td> <%= item.doc %></td>
-                        <td> <a href="#">delete</a></td>
+                        <td> <a href="admin/form_delete?id=<%= item.id %>&password=admin">delete</a></td>
                     </tr>
                     <% });%>
                 </table>
