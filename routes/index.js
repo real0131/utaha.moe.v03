@@ -68,6 +68,20 @@ router.get('/post', function(req, res, next) {
   }
 });
 
+app.get('/image/:name',function (req,res){
+  var filename = req.params.name;
+  console.log(__dirname+'/images/'+filename);
+  fs.exists(__dirname+'/images/'+filename, function (exists) {
+    if (exists) {
+      fs.readFile(__dirname+'/images/'+filename, function (err,data){
+        res.end(data);
+      });
+    } else {
+      res.end('file is not exists');
+    }
+  })
+});
+
 router.get('/about', function(req, res, next) {
   res.render('about', { title: 'Express'});
 });
