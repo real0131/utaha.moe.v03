@@ -79,8 +79,6 @@ router.post('/form_author',function (req,res) { //insert
             res.send('DB error');
         }else{
             console.log(req.body);
-            //req.body.title = req.body.title.replace(/'/g, "\\'");
-            //req.body.content = req.body.content.replace(/'/g, "\\'"); // TODO:'문자 사용
             idNum = JSON.parse(JSON.stringify(results))[0].AUTO_INCREMENT;
             req.body.content = xss(req.body.content);
             req.body.title = xss(req.body.content);

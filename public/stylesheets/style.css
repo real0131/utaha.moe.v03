@@ -3,6 +3,7 @@
 html,body{
   height: 100%;
   width: 100%;
+  background-color: #f0f0f0;
 }
 body {
   margin: 0;
@@ -21,6 +22,7 @@ a {
   width: 100%;
 }
 #pop_content{
+  background-color: white;
   display: inline-block;
   position: relative;
   margin-bottom: 10px;
@@ -28,6 +30,7 @@ a {
   width: 100%;
   top: 0;
   left: 0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 #pop_img{
@@ -113,8 +116,9 @@ a {
     height: 240px;
   }
   .post_img{
+    background: black;
     width: 100%;
-    height: 100%;
+    height: 200px;
   }
   .post_contents{
     margin-left: 16px;
@@ -131,6 +135,9 @@ a {
 @media screen and (max-width: 700px) {
   body{
     font: 14px 'Noto Sans KR', Helvetica, Arial, sans-serif;
+  }
+  .row{
+    display: block;!important;
   }
   #pop_left{
   }
@@ -165,6 +172,7 @@ a {
   .main_content{
     display: inline-block;
     width: 70%;
+    float: left;
   }
   .post_container{
     display: inline-block;

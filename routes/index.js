@@ -67,7 +67,7 @@ router.get('/post', function(req, res, next) {
     res.end('error');
   }
 });
-
+/*
 app.get('/image/:name',function (req,res){
   var filename = req.params.name;
   console.log(__dirname+'/images/'+filename);
@@ -81,7 +81,7 @@ app.get('/image/:name',function (req,res){
     }
   })
 });
-
+*/
 router.get('/about', function(req, res, next) {
   res.render('about', { title: 'Express'});
 });

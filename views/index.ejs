@@ -20,15 +20,6 @@
     <!--<link rel="stylesheet" href="/stylesheets/header.css"/>-->
   </head>
   <body>
-  <!--
-  <header>
-    <nav>
-      <ul class="header_ul">
-        <li class="header_li">HOME</li>
-        <li class="header_li">ABOUT</li>
-      </ul>
-    </nav>
-  </header>-->
   <div id="container">
     <div id="pop_content">
       <div id="pop_left">
@@ -46,17 +37,22 @@
     </div>
     <div class="main_content_container">
       <div class="main_content">
+        <div class="row">
         <% data.forEach(function (item, index) { %>
-        <div class="post_container">
-          <div class="post_img_container">
-            <img src="<%= item.img %>" class="post_img" alt="post img">
-          </div>
-          <div class="post_contents">
-            <a href="<%= item.url %>"><%= item.name %></a>
-          </div>
-        </div>
-        <% });%>
 
+          <div class="col s12 m4">
+            <div class="card hoverable">
+              <div class="card-image">
+                <img src="<%= item.img %>" class="post_img" alt="post img">
+                <span class="card-title">Card Title</span>
+              </div>
+              <div class="card-content">
+                <a href="<%= item.url %>"><%= item.name %></a>
+              </div>
+              </div>
+          </div>
+        <% });%>
+        </div>
       </div>
     </div>
   </div>
