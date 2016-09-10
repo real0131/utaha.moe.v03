@@ -7,6 +7,8 @@ var mysql = require('mysql');
 var http = require('http');
 var url = require('url');
 var xss = require('xss');
+var fs = require('fs');
+var app = express();
 var client;
 
 var key = {
@@ -15,7 +17,9 @@ var key = {
     db:'USE Company',
     table:'SELECT * FROM utaha',
     find:'WHERE id LIKE',
-    autoIncrement : 'SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "Company" AND TABLE_NAME = "utaha";',
+    autoIncrement : 'SELECT AUTO_INCREMENT FROM ' +
+    'information_schema.TABLES WHERE TABLE_SCHEMA = "Company" ' +
+    'AND TABLE_NAME = "utaha";',
     insert :'INSERT INTO utaha (name,url,img,doc) VALUES ',
     update : 'UPDATE utaha SET ',
     admin : 'admin',
@@ -89,7 +93,7 @@ router.post('/form_author',function (req,res) { //insert
                     res.send('DB error');
                 }else{
                     console.log('DB ---------------insert DB complete!');
-                    res.send('complete!');
+                    res.redirect("/");
                 }
             });
         }
@@ -97,8 +101,22 @@ router.post('/form_author',function (req,res) { //insert
 });
 
 router.post('/form_img', function (req,res) { //img
-    console.log(req.body);
-    res.send('complete!');
+    console.log(req.body + req.files.img.name);
+    var __dir__ = req.files.img.path;
+    var target_path = '../public/images/' + req.files.img.name;
+    fs.rename(__dir__, target_path, function(err) {
+        if (err){
+            console.log(err);
+            res.end('error');
+        }
+        fs.unlink(tmp_path, function() {
+            if (err){
+                console.log(err);
+            }
+            console.log('image upload complete!' + req.files.img.name);
+            res.send('File uploaded to: ' + target_path + ' - ' + req.files.img.size + ' bytes');
+        });
+    });
 });
 
 router.post('/form_update', function (req,res) { //update
@@ -115,7 +133,7 @@ router.post('/form_update', function (req,res) { //update
                     res.send('DB error');
                 }else {
                     console.log('db'+req.body.id +' doc update complete');
-                    res.end('update complete');
+                    res.redirect("/");
                 }
             });
         }else{ //title이 있을때(title도 수정할때)
@@ -126,7 +144,7 @@ router.post('/form_update', function (req,res) { //update
                     res.send('DB error');
                 }else {
                     console.log('db'+req.body.id +' title doc update complete');
-                    res.end('update complete');
+                    res.redirect("/");
                 }
             });
         }
@@ -147,7 +165,7 @@ router.get('/form_delete', function (req,res) { //delete
                console.log('db delete error ----------'+error);
                res.end('delete error');
            }else {
-               res.end('delete complete');
+               res.redirect("/");
            }
         });
     }else {
