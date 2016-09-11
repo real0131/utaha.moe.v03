@@ -101,22 +101,20 @@ router.post('/form_author',function (req,res) { //insert
 });
 
 router.post('/form_img', function (req,res) { //img
-    console.log(req.body + req.files.img.name);
-    var __dir__ = req.files.img.path;
-    var target_path = '../public/images/' + req.files.img.name;
-    fs.rename(__dir__, target_path, function(err) {
-        if (err){
-            console.log(err);
-            res.end('error');
-        }
-        fs.unlink(tmp_path, function() {
-            if (err){
-                console.log(err);
-            }
-            console.log('image upload complete!' + req.files.img.name);
-            res.send('File uploaded to: ' + target_path + ' - ' + req.files.img.size + ' bytes');
+    console.log(__dirname+'\\temp\\'+req.files.img.path);
+    exports.upload = function(req, res){
+        fs.readFile(req.files.img.path,function(error,data){
+            var destination = __dirname + '\\temp\\'+ req.files.img.name;
+            fs.writeFile(destination,data,function(error){
+                if(error){
+                    console.log(error);
+                    throw error;
+                }else{
+                    res.redirect('back');
+                }
+            });
         });
-    });
+    };
 });
 
 router.post('/form_update', function (req,res) { //update
