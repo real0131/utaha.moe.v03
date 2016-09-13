@@ -21,16 +21,21 @@
         </script>
     </head>
     <body>
-    <nav class="light-blue lighten-1" role="navigation"></nav>
-    <div class="panel-container">
-        <div class="card-panel white">
-            <% data.forEach(function (item,index) { %>
-            <p><%= item.name %></p>
-            <div><%- item.doc %></div>
-            <%});%>
-    </div>
-    </div>
+    <header>
+    <nav class="light-blue lighten-1" role="navigation">
 
+    </nav>
+    </header>
+    <main>
+        <div class="panel-container">
+            <div class="card-panel white">
+                <% data.forEach(function (item,index) { %>
+                <p><%= item.name %></p>
+                <div><%- item.doc %></div>
+                <%});%>
+            </div>
+        </div>
+    </main>
     <footer class="page-footer">
         <div class="container">
             <div class="row">

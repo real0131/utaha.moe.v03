@@ -43,10 +43,10 @@
           <div class="col s12 m4">
             <div class="card hoverable">
               <div class="card-image">
-                <img src="<%= item.img %>" class="post_img" alt="post img">
+                <img src="<%= item.img %>" class="post_img materialboxed" data-caption="<%= item.name %>" alt="<%=item.name%>">
               </div>
               <div class="card-content">
-                <a href="<%= item.url %>"><%= item.name %></a>
+                <a href="<%= item.url %>"><span class="card-title text-darken-4"><%= item.name %></span></a>
               </div>
               </div>
           </div>
