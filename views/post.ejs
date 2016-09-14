@@ -29,10 +29,12 @@
     <main>
         <div class="panel-container">
             <div class="card-panel white">
-                <% data.forEach(function (item,index) { %>
-                <p><%= item.name %></p>
-                <div><%- item.doc %></div>
-                <%});%>
+                <div class="card-content">
+                    <% data.forEach(function (item,index) { %>
+                    <h2 class="card-title"><p><%= item.name %></p></h2>
+                    <div><%- item.doc %></div>
+                    <%});%>
+                </div>
             </div>
         </div>
     </main>
