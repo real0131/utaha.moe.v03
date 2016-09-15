@@ -215,18 +215,15 @@ a {
     position: absolute;
     top: 0;
     color: black;
-    font-size: 100px;
     height: 100%;
     width: 100%;
     display: inline-block;
   }
   #detail{
     display: table-cell;
-    height: 80px;
-    width: 256px;
+
     border: 2px solid black;
     border-radius: 10px;
-    font-size: 40px;
     font-weight: 300;
     text-align: center;
     vertical-align: middle;
