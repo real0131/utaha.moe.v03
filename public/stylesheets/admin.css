@@ -10,13 +10,19 @@ body {
     overflow-x: hidden;
     font: 14px 'Noto Sans KR', Helvetica, Arial, sans-serif;
 }
-td, th {
+td,tr{
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    overflow-x: auto;
 }
 table{
-    overflow-x: scroll;
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 tr:nth-child(1)
 {

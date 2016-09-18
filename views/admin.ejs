@@ -38,13 +38,16 @@
                     content : <textarea name="content" id="form_content"></textarea><br>
                     <input type="submit" value="Submit">
                 </form>
-                <table>
+                <table class="responsive-table">
+                    <thead>
                     <tr>
                         <td>name</td>
                         <td>url</td>
                         <td>doc</td>
                         <td>settings</td>
                     </tr>
+                    </thead>
+                    <tbody>
                     <% data.forEach(function (item, index) { %>
                     <tr>
                         <td> <%= item.name %></td>
@@ -53,6 +56,7 @@
                         <td> <a href="admin/form_delete?id=<%= item.id %>&password=admin">delete</a></td>
                     </tr>
                     <% });%>
+                    </tbody>
                 </table>
             </div>
             <div id="img_container">
@@ -69,12 +73,15 @@
                     content : <input type="text" name="update_content">
                     <input type="submit" value="Submit">
                 </form>
-                <table>
+                <table class="responsive-table">
+                    <thead>
                     <tr>
                         <td>name</td>
                         <td>url</td>
                         <td>doc</td>
                     </tr>
+                    </thead>
+                    <tbody>
                     <% data.forEach(function (item, index) { %>
                     <tr>
                         <td> <%= item.name %></td>
@@ -82,6 +89,7 @@
                         <td> <%= item.doc %></td>
                     </tr>
                     <% });%>
+                    </tbody>
                 </table>
             </div>
         </div>
