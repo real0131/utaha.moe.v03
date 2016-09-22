@@ -204,7 +204,7 @@ a {
 }
 @media screen and (max-device-width: 480px){
   body{
-    font: 28px 'Noto Sans KR', Helvetica, Arial, sans-serif;
+    font: 14px 'Noto Sans KR', Helvetica, Arial, sans-serif;
   }
   /*TODO : utaha img (right bottom)*/
   #pop_left{
