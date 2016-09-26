@@ -7,7 +7,7 @@ var client;
 
 var key = {
   user:'root',
-  password:'jjh0131!',
+  password:'',
   db:'USE db',
   table:'SELECT * FROM utaha',
   find:'WHERE id LIKE'
