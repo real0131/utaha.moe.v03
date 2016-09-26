@@ -1,14 +1,27 @@
 
-@media only screen and (min-device-width: 480px) {
+@media only screen and (max-device-width: 480px) {
     .card-panel{
         margin: 0 auto;
-        width: 70%;
+        height: 100%;
+        width: 100%;
+    }
+    main > .container{
+        width: 100% !important;
+    }
+}
+@media screen and (min-device-width: 481px){
+    .card-panel{
+        display: block;
+        margin: 0 auto;
+        height: 100%;
+        width: 100%;
     }
 }
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #f0f0f0;
 }
 
 main {
@@ -16,6 +29,7 @@ main {
     margin-top: 100px;
 }
 
-main > img,div,span,iframe,video{
+main > img,iframe,video{
     overflow-x: scroll;
 }
+

@@ -13,7 +13,7 @@ var client;
 
 var key = {
     user:'root',
-    password:'',
+    password:'!',
     db:'USE db',
     table:'SELECT * FROM utaha',
     find:'WHERE id LIKE',
@@ -62,7 +62,6 @@ router.get('/', function(req, res, next) {
                     console.log(error);
                 } else {
                     //res.end('under construction');
-
                     console.log('---------db connected');
                     res.render('admin', {title: 'Express', data: results});
                 }
