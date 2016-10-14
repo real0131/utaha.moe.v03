@@ -8,7 +8,6 @@ var http = require('http');
 var url = require('url');
 var xss = require('xss');
 var fs = require('fs');
-var app = express();
 var client;
 
 var key = {
