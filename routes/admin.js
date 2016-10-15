@@ -25,6 +25,9 @@ var key = {
     url : 'http://utaha.moe/post?id='
  };
 
+var upload = function (req,res) {
+    var de
+}
 
 function handleDisconnect() {
     client = mysql.createConnection(key); // Recreate the connection, since
@@ -99,20 +102,6 @@ router.post('/form_author',function (req,res) { //insert
 });
 
 router.post('/form_img', function (req,res) { //img
-    console.log(__dirname+'\\temp\\'+req.files.img.path);
-    exports.upload = function(req, res){
-        fs.readFile(req.files.img.path,function(error,data){
-            var destination = __dirname + '\\temp\\'+ req.files.img.name;
-            fs.writeFile(destination,data,function(error){
-                if(error){
-                    console.log(error);
-                    throw error;
-                }else{
-                    res.redirect('back');
-                }
-            });
-        });
-    };
 });
 
 router.post('/form_update', function (req,res) { //update
@@ -120,29 +109,57 @@ router.post('/form_update', function (req,res) { //update
     req.body.id = Number(req.body.id);
     req.body.update_title = xss(req.body.update_title);
     req.body.update_content = xss(req.body.update_content);
+    req.body.update_img = xss(req.body.update_img);
     if(Number.isInteger(req.body.id)){
         if(req.body.update_title==''){ //title이 없을때
-            client.query(key.update+"doc="+client.escape(req.body.update_content)+" WHERE id="+req.body.id+";",function (error,result) {
-                if(error)
-                {
-                    console.log('update error------------'+error);
-                    res.send('DB error');
-                }else {
-                    console.log('db'+req.body.id +' doc update complete');
-                    res.redirect("/");
-                }
-            });
+            if(req.body.update_img==''){//img없을때
+                client.query(key.update+"doc="+client.escape(req.body.update_content)+" WHERE id="+req.body.id+";",function (error,result) {
+                    if(error)
+                    {
+                        console.log('update error------------'+error);
+                        res.send('DB error');
+                    }else {
+                        console.log('db'+req.body.id +' doc update complete');
+                        res.redirect("/");
+                    }
+                });
+            }else{
+                client.query(key.update+"doc="+client.escape(req.body.update_content)+",img="+client.escape(req.body.update_img)+" WHERE id="+req.body.id+";",function (error,result) {
+                    if(error)
+                    {
+                        console.log('update error------------'+error);
+                        res.send('DB error');
+                    }else{
+                        console.log('db'+req.body.id+' doc img update complete');
+                        res.redirect("/");
+                    }
+                });
+            }
+
         }else{ //title이 있을때(title도 수정할때)
-            client.query(key.update+"name="+client.escape(req.body.update_title)+",doc="+client.escape(req.body.update_content)+" WHERE id="+req.body.id+";",function (error,result) {
-                if(error)
-                {
-                    console.log('update error------------'+error);
-                    res.send('DB error');
-                }else {
-                    console.log('db'+req.body.id +' title doc update complete');
-                    res.redirect("/");
-                }
-            });
+            if(req.body.update_img==''){//image없을때
+                client.query(key.update+"name="+client.escape(req.body.update_title)+",doc="+client.escape(req.body.update_content)+" WHERE id="+req.body.id+";",function (error,result) {
+                    if(error)
+                    {
+                        console.log('update error------------'+error);
+                        res.send('DB error');
+                    }else {
+                        console.log('db'+req.body.id +' title doc update complete');
+                        res.redirect("/");
+                    }
+                });
+            }else{
+                client.query(key.update+"name="+client.escape(req.body.update_title)+",doc="+client.escape(req.body.update_content)+",img="+client.escape(req.body.update_img)+" WHERE id="+req.body.id+";",function (error,result) {
+                    if(error)
+                    {
+                        console.log('update error------------'+error);
+                        res.send('DB error');
+                    }else{
+                        console.log('db'+req.body.id+' title doc img update complete');
+                        res.redirect("/");
+                    }
+                });
+            }
         }
     }
 });
