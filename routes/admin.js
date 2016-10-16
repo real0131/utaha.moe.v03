@@ -51,9 +51,10 @@ function handleDisconnect() {
 
 handleDisconnect();
 
-client.query(key.db); //USE TABLE
+client.query(key.db);
 
 router.get('/', function(req, res, next) {
+    client.query(key.db);
     //res.send('admin');
     var uri = req.url;
     var query = url.parse(uri,true).query;
@@ -102,6 +103,7 @@ router.post('/form_author',function (req,res) { //insert
 });
 
 router.post('/form_img', function (req,res) { //img
+    
 });
 
 router.post('/form_update', function (req,res) { //update
