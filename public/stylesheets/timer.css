@@ -1,0 +1,36 @@
+#event-page{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items:center;
+    -webkit-align-item:center;
+    z-index: 999;
+    background-color: white;
+}
+#event-cancel{
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+#event-content-wrapper{
+    height: auto;
+    width: 70%;
+    margin: 0 auto;
+}
+#event-title{
+    font-weight: 600;
+    font-size: 30px;
+}
+#event-time {
+    font-size: 30px;
+}
+#event-img{
+    z-index: -1;
+    position: absolute;
+    right: 50px;
+}

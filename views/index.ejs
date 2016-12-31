@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <meta name="theme-color" content="#5a5c7e">
     <link rel='stylesheet' href='/css/style.min.css' />
+    <link rel="stylesheet" href="/stylesheets/timer.css"/>
     <link rel="icon" href="images/favicon.png"/>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -22,6 +23,16 @@
     <!--<link rel="stylesheet" href="/stylesheets/header.css"/>-->
   </head>
   <body>
+  <div id="event-page">
+    <div id="event-cancel">
+      <img src="images/hide_button.png" alt="cancel">
+    </div>
+    <div id="event-content-wrapper">
+      <div id="event-title">UTAHA in 2017!!</div>
+      <div id="event-time"></div>
+    </div>
+    <div id="event-img"><img src="images/pop_img.png" alt="utaha"></div>
+  </div>
   <div id="container">
     <div id="pop_content">
       <div id="pop_left">
@@ -41,7 +52,6 @@
       <div class="main_content">
         <div class="row">
         <% data.forEach(function (item, index) { %>
-
           <div class="col s12 m4">
             <div class="card hoverable">
               <div class="card-image">
@@ -84,10 +94,16 @@
       </div>
     </footer>
   </div>
-
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
-
+  <script type="text/javascript" src="js/timer.js"></script>
+  <script type="text/javascript">
+    $('#event-cancel').click(function () {
+      $('#event-page').animate({opacity: 0},500,function () {
+        $('#event-page').css('display','none');
+      })
+    });
+  </script>
   </body>
 </html>
