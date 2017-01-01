@@ -11,6 +11,7 @@ var timer = function () {
     
     if (d.getMonth()==time.month&&d.getDate() == time.date){
         //finish inner html
+        document.getElementsById('event-time').innerHTML = "Happy Birthday!!";
         clearInterval(refresh);
     }else{
         document.getElementById('event-time').innerHTML=
