@@ -48,13 +48,14 @@ function handleDisconnect() {
             throw err;                                 // server variable configures this)
         }});
 }
-
-handleDisconnect();
-
-client.query(key.db);
+function mysqlSchedule() {
+    handleDisconnect();
+    client.query(key.db);
+}
+mysqlSchedule();
 
 router.get('/', function(req, res, next) {
-    handleDisconnect();
+    mysqlSchedule();
     client.query(key.db);
     //res.send('admin');
     var uri = req.url;
@@ -77,7 +78,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/form_author',function (req,res) { //insert
-    handleDisconnect();
+    mysqlSchedule();
     console.log(req.body);
     var IdNum; //AUTO INCREMENT id 값
     client.query(key.autoIncrement,function (error,results) {
@@ -109,7 +110,7 @@ router.post('/form_img', function (req,res) { //img
 });
 
 router.post('/form_update', function (req,res) { //update
-    handleDisconnect();
+    mysqlSchedule();
     console.log(req.body);
     req.body.id = Number(req.body.id);
     req.body.update_title = xss(req.body.update_title);
@@ -170,7 +171,7 @@ router.post('/form_update', function (req,res) { //update
 });
 
 router.get('/form_delete', function (req,res) { //delete
-    handleDisconnect();
+    mysqlSchedule();
     var uri = req.url;
     var query = url.parse(uri,true).query;
     console.log('asdf'+query);

@@ -33,13 +33,15 @@ function handleDisconnect() {
     }});
 }
 
-
-handleDisconnect();
-client.query(key.db);
+function mysqlSchedule() {
+  handleDisconnect();
+  client.query(key.db);  
+}
+mysqlSchedule();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  handleDisconnect();
+  mysqlSchedule();  
   client.query(key.table,function (error, results) {
     if (error) {
       console.log(error);
@@ -50,7 +52,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/post', function(req, res, next) {
-  handleDisconnect();
+  mysqlSchedule();
   var uri = req.url;
   var query = url.parse(uri,true).query;
   if (req.method == 'GET' || query.id != null)
