@@ -34,7 +34,7 @@ function handleDisconnect() {
 }
 
 
-
+handleDisconnect();
 client.query(key.db);
 
 /* GET home page. */
