@@ -6,6 +6,14 @@ var time = {
 };
 var d = new Date();
 
+function stopScroll(){
+    $('body').on('scroll touchmove mousewheel', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    });
+}
+
 var timer = function () {
     var result = time.unix - (Date.now()/1000);
     
@@ -22,4 +30,5 @@ var timer = function () {
     }
 };
 
+stopScroll();
 var refresh = setInterval(timer,100);

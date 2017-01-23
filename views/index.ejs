@@ -99,9 +99,14 @@
   <script type="text/javascript" src="js/materialize.min.js"></script>
   <script type="text/javascript" src="js/timer.js"></script>
   <script type="text/javascript">
+    function startScroll(){
+      $('body').off('scroll touchmove mousewheel');
+    }
+
     $('#event-cancel').click(function () {
       $('#event-page').animate({opacity: 0},500,function () {
         $('#event-page').css('display','none');
+        startScroll();
       })
     });
   </script>
