@@ -15,9 +15,10 @@ function stopScroll(){
 }
 
 var timer = function () {
-    var result = time.unix - (Date.now()/1000);
+    var now = Date.now()/1000;
+    var result = time.unix - now;
     
-    if (d.getMonth()==time.month&&d.getDate() == time.date){
+    if (now >= time.unix){
         //finish inner html
         document.getElementsById('event-time').innerHTML = "Happy Birthday!!";
         clearInterval(refresh);
