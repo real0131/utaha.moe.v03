@@ -20,7 +20,7 @@ var timer = function () {
     
     if (now >= time.unix){
         //finish inner html
-        document.getElementsById('event-time').innerHTML = "Happy Birthday!!";
+        document.getElementById('event-time').innerHTML = "Happy Birthday!!";
         clearInterval(refresh);
     }else{
         document.getElementById('event-time').innerHTML=
